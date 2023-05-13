@@ -14,7 +14,7 @@ public class TestAccountService {
 	
 	@Test
 	public void testAccountRegistraiton() {
-		Account account = new Account(1010101010,"Shubham","Saving Account",20000.0);
+		Account account = new Account(1010101010,"Praveen","Saving Account",20000.0);
 		assertEquals(account.getAccountNumber(),accountService.registerDummyAccount().getAccountNumber());
 		assertEquals(account.getAccountName(),accountService.registerDummyAccount().getAccountName());
 	}
