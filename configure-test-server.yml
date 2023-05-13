@@ -1,0 +1,18 @@
+---
+- hosts: test-server
+  become: true
+  tasks:
+  - name: update apt
+    command: sudo apt-get update
+
+  - name: install docker
+    command: sudo apt install -y docker.io
+
+  - name: start docker service
+    command: sudo systemctl start docker
+  
+  - name: stop and remove existing insure-me container
+    command: sudo docker rm -f banking-finance 
+    
+  - name: deploy insureme application
+    command: sudo docker run -itd -p 8081:8081 --name  banking-finance praveensirvi/banking-finance:v1
