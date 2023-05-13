@@ -1,0 +1,5 @@
+com/project/staragile/banking/Account.class
+com/project/staragile/banking/BankingApplication.class
+com/project/staragile/banking/AccountRepository.class
+com/project/staragile/banking/AccountController.class
+com/project/staragile/banking/AccountService.class

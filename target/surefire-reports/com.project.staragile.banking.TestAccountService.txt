@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.project.staragile.banking.TestAccountService
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.95 s <<< FAILURE! - in com.project.staragile.banking.TestAccountService
+testAccountRegistraiton  Time elapsed: 0.231 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Praveen> but was: <Shubham>
+	at com.project.staragile.banking.TestAccountService.testAccountRegistraiton(TestAccountService.java:19)
+
