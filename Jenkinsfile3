@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout git') {
+            steps {
+              git 'https://github.com/praveensirvi1212/banking-finance-project.git'
+            }
+        }
+        
+        stage ('Configure prod server and app deployment on prod server after selenium test cases succed') {
+            steps {
+                ansiblePlaybook become: true, credentialsId: 'ssh-key3', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-prod-server.yml'
+            }
+        }
+        
+    }
+}
