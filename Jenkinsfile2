@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    tools { 
+        maven 'maven-3.8.6' 
+    }
+    stages {
+        stage('Checkout git') {
+            steps {
+              git 'https://github.com/praveensirvi1212/banking-finance-project.git'
+            }
+        }
+        
+        stage('publish reports'){
+            steps {
+            
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'screenshot.png', keepAll: false, reportDir: '/var/lib/jenkins/workspace/test-banking-finance-pipeline', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            }
+        }
+        
+        stage('Selenium test cases') {
+            steps {
+              sh 'java -jar Selenium.jar'
+            }
+        }
+        
+    }
+}
