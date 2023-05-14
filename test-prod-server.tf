@@ -97,11 +97,11 @@ resource "aws_security_group" "dev_sg" {
 locals {
   instance_config = {
     "test-server" = {
-      ami       = "ami-0cca134ec43cf708f"
+      ami       = "ami-02eb7a4783e7e9317"
       private_ip = "10.0.0.50"
     }
     "prod-server" = {
-      ami       = "ami-0cca134ec43cf708f"
+      ami       = "ami-02eb7a4783e7e9317"
       private_ip = "10.0.0.51"
     }
   }
