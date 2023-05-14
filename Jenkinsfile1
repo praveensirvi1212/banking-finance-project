@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    tools { 
+        maven 'maven-3.8.6' 
+    }
+    stages {
+        stage('Checkout git') {
+            steps {
+              git 'https://github.com/praveensirvi1212/banking-finance-project.git'
+            }
+        }
+        
+        stage ('Build & JUnit Test') {
+            steps {
+                sh 'mvn clean package' 
+            }
+        }
+        
+        stage ('Docker Build') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    
+                    sh 'docker build -t praveensirvi/banking-finance:v1 .'
+                    sh "docker login -u ${username} -p ${password} "
+                    sh 'docker push praveensirvi/banking-finance:v1'
+                    
+                    
+                }
+            }
+        }
+        
+        stage ('Configure test server and application deployment') {
+            steps {
+                ansiblePlaybook become: true, credentialsId: 'ssh-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-test-server.yml'
+            }
+        }
+        
+    }
+}
