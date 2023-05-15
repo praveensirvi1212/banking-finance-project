@@ -1,6 +1,8 @@
 # banking-finance-project
 # DevOps project 
-An end to end CI-CD projects implemented to build, containerze, deploy the app to testing env on EC2 , selenium testing and deploy the app to prod env on EC2
+An end to end CI-CD projects implemented to build, containerze, deploy the app to testing env on EC2 , selenium testing and deploy the app to prod env on EC2 .
+created aws infra using terraform.
+detailed monitoring of nodes and containers using prometheus and grafana.
 
 
 
